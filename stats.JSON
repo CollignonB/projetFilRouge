@@ -1,0 +1,26 @@
+[
+    {
+        "Pays":"France",
+        "Indice Boursier ":"CAC40",
+        "Valeur actuelle":5033,
+        "Agmentation": true
+    },
+    {
+        "Pays":"Allamagne",
+        "Indice Boursier ":"DAX",
+        "Valeur actuelle":13162,
+        "Agmentation": false
+    },
+    {
+        "Pays":"Zone Euro",
+        "Indice Boursier ":"Euro Stoxx 50",
+        "Valeur actuelle":"3344",
+        "Agmentation": true
+    },
+    {
+        "Pays":"Pays-Bas",
+        "Indice Boursier ":"AEX",
+        "Valeur actuelle":"565",
+        "Agmentation": true
+    }
+]
