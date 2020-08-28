@@ -41,7 +41,7 @@ closeB.style.height = "3em";
 closeB.style.backgroundColor = "yellow";
 closeB.innerText = "J'ai compris";
 closeB.style.position = "relative";
-closeB.style.bottom = "475px";
+closeB.style.bottom = "550px";
 closeB.style.left = "45%";
 
 // function to the button
