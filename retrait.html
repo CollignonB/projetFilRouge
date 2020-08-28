@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Virement</title>
+  <title>Dépôt</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -39,35 +39,17 @@
       </div>
     </div>
   </head>
+
   <main class="container">
-    <form>
-      <div class="form-group">
-        <label for="accountType">Type de compte</label>
-        <select class="form-control" id="accountToDebit">
-          <option>compte1</option>
-          <option>compte2</option>
-          <option>compte3</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="amounToTransfert">Montant à transferer</label>
-        <input type="number" class="form-control" id="amounToTransfert">
-        <p id="errorT"></p>
-      </div>
-    
     <div class="form-group">
-      <label for="accountType">Type de compte</label>
-      <select class="form-control" id="accountToCredit">
-        <option>compte1</option>
-        <option>compte2</option>
-        <option>compte3</option>
-      </select>
-      <p id="errorM"></p>
-      <input type="submit" value="Valider" class="btn btn-primary mt-4">
+        <label for="baseAmount">Montant à retirer</label>
+        <input type="number" class="form-control" id="baseAmount" placeholder="50" min="50">
+      </div>
+      <input type="submit" value="Valider" class="btn btn-primary">
     </form>
   </main>
   <footer>
-    <div class="jumbotron jumbotron-fluid mb-0 bg-primary">
+    <div class="jumbotron jumbotron-fluid mb-0 mt-4 bg-primary">
       <div class="container">
         <p class="lead text-white">Tout droit réservé Collignon Baptiste</p>
       </div>
@@ -75,7 +57,7 @@
   </footer>
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
-  <script src="js/transfert.js"></script>
+  <script src="#"></script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>
