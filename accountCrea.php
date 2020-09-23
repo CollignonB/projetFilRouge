@@ -17,7 +17,7 @@ include "template/header.php";
 
 <main class="container">
   <h2>Création d'un nouveau compte</h2>
-  <div class="row mb-6">
+  <div class="row">
     <div class="col-6">
       <form action="accountCrea.php" method="post">
         <div class="form-group">
