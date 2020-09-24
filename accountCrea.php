@@ -1,15 +1,16 @@
 <?php 
-$accountData = [];
+$accountData = ["Nom du compte","Type du compte", "montant du premier dépot"];
 if(isset($_POST["accountName"]) && !empty($_POST["accountName"])){
-  array_push($accountData, htmlspecialchars($_POST["accountName"]));
+  $accountData[0] = htmlspecialchars($_POST["accountName"]);
 }
 
 if(isset($_POST["accountType"]) && !empty($_POST["accountType"])){
-  array_push($accountData, htmlspecialchars($_POST["accountType"]));
+  $accountData[1] =  htmlspecialchars($_POST["accountType"]);
 }
 if(isset($_POST["amount"]) && !empty($_POST["amount"])){
-  array_push($accountData, htmlspecialchars($_POST["amount"]));
+  $accountData[2] = htmlspecialchars($_POST["amount"]);
 }
+// var_dump($accountData);
 
 include "template/nav.php";
 include "template/header.php";
@@ -37,10 +38,10 @@ include "template/header.php";
           <label for="amount">Premier Dépôt</label>
           <input type="number" class="form-control" id="amount" name ="amount" value="50" min="50">
         </div>
-        <button type="submit" class="btn btn-primary" name="accountCrea">Envoyer</button>
+        <button type="submit" class="btn btn-primary" name="accountCrea" >Créer</button>
       </form>
     </div>
-    <div class="col-6">
+    <div class="col-6" >
       <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title"><?php echo $accountData[0] ?></h5>
@@ -50,6 +51,7 @@ include "template/header.php";
       </div>
     </div>
   </div>
+
 
 <?php 
 include "template/footer.php";
