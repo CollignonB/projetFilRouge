@@ -29,6 +29,7 @@ require_once "acounts.php";
     <?php endforeach; ?>
     </div>
 
+<script src="js/main.js"></script>
 <?php 
 include "template/footer.php";
 ?>

@@ -1,4 +1,8 @@
 <?php 
+
+include "template/nav.php";
+include "template/header.php";
+
 $accountData = ["Nom du compte","Type du compte", "montant du premier dépot"];
 if(isset($_POST["accountName"]) && !empty($_POST["accountName"])){
   $accountData[0] = htmlspecialchars($_POST["accountName"]);
@@ -10,10 +14,8 @@ if(isset($_POST["accountType"]) && !empty($_POST["accountType"])){
 if(isset($_POST["amount"]) && !empty($_POST["amount"])){
   $accountData[2] = htmlspecialchars($_POST["amount"]);
 }
-// var_dump($accountData);
 
-include "template/nav.php";
-include "template/header.php";
+
 ?>
 
 <main class="container">
@@ -23,7 +25,7 @@ include "template/header.php";
       <form action="accountCrea.php" method="post">
         <div class="form-group">
           <label for="accountName">Nom du compte</label>
-          <input type="text" class="form-control" id="accountName" name="accountName"  value="Nom du Compte">
+          <input type="text" class="form-control" id="accountName" name="accountName"   >
         </div>
         <div class="form-group">
           <label for="accountType">Type de Compte</label>
@@ -36,7 +38,7 @@ include "template/header.php";
         </div>
         <div class="form-group">
           <label for="amount">Premier Dépôt</label>
-          <input type="number" class="form-control" id="amount" name ="amount" value="50" min="50">
+          <input type="number" class="form-control" id="amount" name ="amount"  min="50">
         </div>
         <button type="submit" class="btn btn-primary" name="accountCrea" >Créer</button>
       </form>
