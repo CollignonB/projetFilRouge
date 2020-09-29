@@ -1,24 +1,39 @@
 let main = document.getElementsByTagName("main")[0];
+let Blayer = document.createElement("div");
 let layer = document.createElement("div");
+let closeB = document.createElement("button");
 
-layer.setAttribute("id","layer");
+
+Blayer.style.backgroundColor="grey";
+Blayer.style.opacity = "50%";
+Blayer.style.width = "100%";
+Blayer.style.height = "100vh";
+Blayer.style.position = "fixed";
+Blayer.style.left = "0";
+Blayer.style.top = "0";
+Blayer.style.zIndex = "3001";
+
+layer.style.width ="50%";
+layer.style.height = "300px";
+layer.style.backgroundColor ="cyan";
+layer.style.zIndex ="3002";
+layer.style.position = "fixed";
+layer.style.left = "25%";
+layer.style.top = "10vh";
+
+closeB.style.width = "7em";
+closeB.style.height ="3em";
+closeB.style.position ="fixed";
+closeB.innerText ="J'ai compris";
+
+
+main.appendChild(Blayer);
 main.appendChild(layer);
 
-let closeB = document.createElement("button");
-main.appendChild(closeB);
 
 
-// make style of div layer
-layer.style.width = "90%";
-layer.style.height = "300px";
-layer.style.backgroundColor = "black";
-layer.style.position = "absolute";
-layer.style.top = "100px"
-layer.style.left = "100px";
-layer.style.opacity = "85%";
-layer.style.textAlign = "center";
-layer.style.color = "red";
-layer.style.fontSize = "2rem";
+console.log(closeB);
+
 
 // get layer's text with AJAX request
 let httpRequest = new XMLHttpRequest();
@@ -26,8 +41,9 @@ let httpRequest = new XMLHttpRequest();
 httpRequest.onreadystatechange = function() {
     if (httpRequest.readyState === XMLHttpRequest.DONE){
         if(httpRequest.status === 200){
-
+            
             layer.innerText = httpRequest.responseText;
+            layer.appendChild(closeB);
         }
     }
 }
@@ -35,18 +51,10 @@ httpRequest.open("GET", "securityReminder.txt", true);
 httpRequest.send();
 
 
-// style of button 
-closeB.style.width = "7em";
-closeB.style.height = "3em";
-closeB.style.backgroundColor = "yellow";
-closeB.innerText = "J'ai compris";
-closeB.style.position = "relative";
-closeB.style.bottom = "650px";
-closeB.style.left = "45%";
-
 // function to the button
 
 closeB.addEventListener("click", function(){
     layer.style.display = "none";
+    Blayer.style.display = "none";
     this.style.display = "none";
 });
