@@ -27,8 +27,8 @@
   <nav class="nav">
     <a class="nav-link active" href="index.php">Accueil</a>
     <a class="nav-link" href="accountCrea.php">Création de compte</a>
-    <a class="nav-link" href="transfert.html">Virement</a>
-    <a class="nav-link" href="stats.html">Statistiques</a>
-    <a class="nav-link" href="articles.html">Articles</a>
+    <a class="nav-link" href="transfert.php">Virement</a>
+    <a class="nav-link" href="stats.php">Statistiques</a>
+    <a class="nav-link" href="articles.php">Articles</a>
     <a class="nav-link" href="connection.php">Connexion</a>
   </nav>

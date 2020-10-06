@@ -1,10 +1,11 @@
 DROP DATABASE IF EXISTS banque_php;
 CREATE DATABASE banque_php CHARACTER SET 'utf8';
-DROP USER IF EXISTS banquePHP;
+USE banque_php;
+DROP USER IF EXISTS 'BanquePHP'@'Localhost';
 
-CREATE USER 'banquePHP'@'banque_php' IDENTIFIED BY 'CoucouCNous';
+CREATE USER 'BanquePHP'@'Localhost';
 
-GRANT ALL PRIVILEGES ON banque_php.* TO 'banquePHP'@'banque_php';
+GRANT ALL PRIVILEGES ON banque_php.* TO 'BanquePHP'@'banque_php' IDENTIFIED BY 'CoucouCNous';
 
 CREATE TABLE Users (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
