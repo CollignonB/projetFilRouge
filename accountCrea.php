@@ -3,6 +3,8 @@
 include "template/nav.php";
 include "template/header.php";
 
+$error = "";
+
 $accountData = ["Nom du compte","Type du compte", "montant du premier dépot"];
 if(isset($_POST["accountName"]) && !empty($_POST["accountName"])){
   $accountData[0] = htmlspecialchars($_POST["accountName"]);
@@ -11,8 +13,12 @@ if(isset($_POST["accountName"]) && !empty($_POST["accountName"])){
 if(isset($_POST["accountType"]) && !empty($_POST["accountType"])){
   $accountData[1] =  htmlspecialchars($_POST["accountType"]);
 }
-if(isset($_POST["amount"]) && !empty($_POST["amount"])){
+
+if(isset($_POST["amount"]) && !empty($_POST["amount"]) && $_POST["amount"] >= 50){
   $accountData[2] = htmlspecialchars($_POST["amount"]);
+}
+else {
+  $error .= "Montant minum 50 euros !";
 }
 
 
@@ -22,6 +28,7 @@ if(isset($_POST["amount"]) && !empty($_POST["amount"])){
   <h2>Création d'un nouveau compte</h2>
   <div class="row">
     <div class="col-6">
+    <?php if(!empty($error)) { echo "<p class='alert alert-danger'>$error</p>";}?>
       <form action="accountCrea.php" method="post">
         <div class="form-group">
           <label for="accountName">Nom du compte</label>
@@ -44,7 +51,8 @@ if(isset($_POST["amount"]) && !empty($_POST["amount"])){
       </form>
     </div>
     <div class="col-6" >
-      <div class="card" style="width: 18rem;">
+      <?php if(empty($error)) : ?>
+        <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title"><?php echo $accountData[0] ?></h5>
           <h6 class="card-subtitle mb-2 text-muted">Type de compte : <?php echo $accountData[1] ?></h6>
@@ -52,9 +60,8 @@ if(isset($_POST["amount"]) && !empty($_POST["amount"])){
         </div>
       </div>
     </div>
+      <?php endif; ?>
   </div>
-
-
-<?php 
+<?php
 include "template/footer.php";
 ?>
