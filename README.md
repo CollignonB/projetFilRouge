@@ -10,5 +10,6 @@ Dans cette version du projet je commence la dynamisation de l'application avec P
 Le template est géré via différents fichiers qui sont chargés sur chaque pages du site pour améliorer la maintenabilité.
 La création d'un nouveau compte affiche maintenant un rappel à coter du formulaire après avoir appuyer sur le bouton "Envoyer".
 Les compte afficher sur la page d'acceuil sont maintenant généré automatiquement via un fichier avec les informations nécéssaire.
-L'affichage du détail d'un compte est fait via un transfert de données par l'URL et rempli automatiquement. 
-Remplacement des pages .html en pages .php, sauvegarde des pages.html dans un dossier spécifique
+L'affichage du détail d'un compte est fait via un transfert de données par l'URL et rempli automatiquement.
+
+Remplacement des pages .html en pages .php, sauvegarde des pages.html dans un dossier spécifique.
