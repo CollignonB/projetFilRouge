@@ -2,7 +2,7 @@
 include "template/nav.php";
 include "template/header.php";
 require_once "login.php";
-session_start();
+
 session_unset();
 
 $logMsg = "";
@@ -28,8 +28,6 @@ if(!empty($_POST) && isset($_POST["login"])){
         if(password_verify($_POST["password"], $user["password"])) {            
             $_SESSION["user"] = $user;
             header("location:index.php");
-            var_dump($user);  
-
         }else{
             $logMsg = "identifiant ou mot de passe incorect";
         }

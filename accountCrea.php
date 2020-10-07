@@ -1,7 +1,6 @@
 <?php 
 include "template/nav.php";
 include "template/header.php";
-session_start();
 
 try{
   $db = new PDO('mysql:host=localhost;dbname=banque_php','root');

@@ -3,7 +3,6 @@
 include "template/nav.php";
 include "template/header.php";
 require_once "acounts.php";
-session_start();
 if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
   header("location:connection.php");
 }
@@ -41,7 +40,7 @@ $account = $query->fetchAll(PDO::FETCH_ASSOC);
 
       <div class="card mb-4 col-lg-3 mr-4 col-sm-12 col-md-5">
         <div class="card-header">
-         <a href="account.php?id=<?php echo $value["id"] ?>"><?php echo $value["name"]; ?></a>
+         <a href="account.php?id=<?php echo $value["id"] ?>&type=<?php echo $value["name"]?>&amount=<?php echo $value["montant"]?>"><?php echo $value["name"]; ?></a>
         </div>
         <div class="card-body">
           <h5 class="card-title">numeros de compte : <?php echo $value['id']; ?></h5>         

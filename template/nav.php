@@ -31,9 +31,10 @@
     <a class="nav-link" href="stats.php">Statistiques</a>
     <a class="nav-link" href="articles.php">Articles</a>
     <?php 
-      if(!empty($_SESSION["user"]) && isset($_SESSION["user"])): ?>
+    session_start();
+      if(!empty($_SESSION) && isset($_SESSION["user"])): ?>
         <a class="nav-link" href="connection.php" >Déconnexion</a>
       <?php else: ?>
-      <a class="nav-link" href="connection.php">Connexion</a>
+        <a class="nav-link" href="connection.php">Connexion</a>
       <?php endif ?>
   </nav>
