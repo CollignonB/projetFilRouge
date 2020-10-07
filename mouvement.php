@@ -22,34 +22,54 @@ $query->execute([
     "accountid" => $_GET["id"]
 ]);
 $account = $query->fetch(PDO::FETCH_ASSOC);
-var_dump($account);
+
+var_dump($_POST["accountAction"]);
 
 if(!empty($_POST) && isset($_POST["financialMvt"])){
     $query = $db->prepare(
-        "INSERT INTO transferts ('type','amount','account_id','date_transfert)
-        VALUES (':type', ':amount', ':account_id', current_timestamp())"
+        "INSERT INTO transferts (type, amount, account_id, date_transfert)
+        VALUES (:typeT, :amount, :account_id, current_timestamp())"
     );
     $query->execute([
-        "type"=>$_POST["accountAction"],
+        "typeT"=>$_POST["accountAction"],
         "amount"=>$_POST["amount"],
         "account_id"=>$account["id"]
     ]);
+    $newAmount = $account["montant"];
+
+    if(isset($_POST["accountAction"]) === "dépôt" ){
+        $newAmount += $_POST["amount"];
+    }else{
+        $newAmount -= $_POST["amount"];
+    }
+
+    $request = $db->prepare(
+        "UPDATE accounts SET montant = :newAmount WHERE accounts.id = :accountId"
+    );
+    $request->execute([
+        "newAmount"=>$newAmount,
+        "accountId"=>$account["id"]
+    ]);
 }
 
-$newAmount = 0;
-if($_POST["accountAction"] === "dépôt" ){
-    $newAmount = $account["montant"] + $_POST["amount"];
-}else{
-    $newAmount = $account["montant"] - $_POST["amount"];
-}
 
-$query = $db->prepare(
-    "UPDATE accounts SET montant = :newAmount WHERE accounts.id = :accountId"
-);
-$query->execute([
-    "newAmount"=>$newAmount,
-    "accountId"=>$account["id"]
-]);
+// if(isset($_POST["accountAction"]) === "dépôt" ){
+//     $newAmount = 0;
+//     $newAmount = $account["montant"] + $_POST["amount"];
+// }elseif(isset($_POST["accountAction"]) === "retrait" ){
+//     $newAmount = 0;
+//     $newAmount = $account["montant"] - $_POST["amount"];
+// }
+
+// if(!empty($_POST) && isset($_POST["financialMvt"])){
+//     $request = $db->prepare(
+//         "UPDATE accounts SET montant = :newAmount WHERE accounts.id = :accountId"
+//     );
+//     $request->execute([
+//         "newAmount"=>$newAmount,
+//         "accountId"=>$account["id"]
+//     ]);
+// }
 ?>
 <main class="container">
   <h2>Mouvement sur le compte</h2>
@@ -71,7 +91,7 @@ $query->execute([
       </form>
     </div>
   </div>
-
+<?php echo $account['montant']; ?>
 <?php 
 include "template/footer.php";
 ?>
