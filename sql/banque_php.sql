@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 07 oct. 2020 à 15:55
+-- Généré le : mer. 07 oct. 2020 à 17:03
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.9
 
@@ -42,10 +42,10 @@ CREATE TABLE `accounts` (
 
 INSERT INTO `accounts` (`id`, `date_crea`, `user_id`, `account_type_id`, `bank_id`, `montant`) VALUES
 (1, '2020-10-07 10:12:01', 1, 2, 1, 3521.00),
-(2, '2020-10-07 12:48:54', 2, 1, 2, 3756.00),
+(2, '2020-10-07 14:34:53', 2, 1, 2, 3606.00),
 (3, '2020-10-07 10:09:44', 2, 4, 1, 1254.00),
 (4, '2020-10-07 12:25:26', 2, 1, NULL, 250.00),
-(5, '2020-10-07 12:45:40', 1, 2, NULL, 500.00),
+(5, '2020-10-07 14:22:32', 1, 2, NULL, 450.00),
 (6, '2020-10-07 12:49:48', 2, 1, NULL, 0.00),
 (7, '2020-10-07 12:50:29', 2, 1, NULL, 4567.00);
 
@@ -122,7 +122,11 @@ INSERT INTO `transferts` (`id`, `type`, `amount`, `account_id`, `date_transfert`
 (10, 'dépôt', 350.00, 2, '2020-10-07 11:51:27'),
 (11, 'dépôt', 0.00, 2, '2020-10-07 12:01:17'),
 (12, 'dépôt', 22.00, 2, '2020-10-07 12:01:24'),
-(13, 'dépôt', 200.00, 2, '2020-10-07 12:48:54');
+(13, 'dépôt', 200.00, 2, '2020-10-07 12:48:54'),
+(14, 'dépôt', 50.00, 5, '2020-10-07 14:22:32'),
+(15, 'dépôt', 50.00, 2, '2020-10-07 14:34:36'),
+(16, 'dépôt', 50.00, 2, '2020-10-07 14:34:51'),
+(17, 'dépôt', 50.00, 2, '2020-10-07 14:34:53');
 
 -- --------------------------------------------------------
 
@@ -211,7 +215,7 @@ ALTER TABLE `banks`
 -- AUTO_INCREMENT pour la table `transferts`
 --
 ALTER TABLE `transferts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `users`
