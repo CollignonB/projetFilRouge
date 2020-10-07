@@ -1,4 +1,8 @@
 <?php 
+
+include "template/nav.php";
+include "template/header.php";
+require_once "acounts.php";
 session_start();
 if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
   header("location:connection.php");
@@ -12,21 +16,19 @@ try{
 }
 
 $query = $db->prepare(
-  "SELECT a.id, a_t.name, a.number, a.montant FROM `account_types` as a_t
+  "SELECT a.id, a_t.name, a.montant FROM `account_types` as a_t
   INNER JOIN accounts as a 
   ON a_t.id = a.account_type_id
   INNER JOIN users as u
   ON u.id = a.user_id
-  Where u.id = :userid"
+  Where u.id = :userid
+  ORDER BY a.id"
 );
 $query->execute([
   "userid" => $_SESSION["user"]["id"]
 ]);
 $account = $query->fetchAll(PDO::FETCH_ASSOC);
 
-include "template/nav.php";
-include "template/header.php";
-require_once "acounts.php";
 ?>
 
 <main class="container">
@@ -42,7 +44,7 @@ require_once "acounts.php";
          <a href="account.php?id=<?php echo $value["id"] ?>"><?php echo $value["name"]; ?></a>
         </div>
         <div class="card-body">
-          <h5 class="card-title">numeros de compte : <?php echo $value['number']; ?></h5>         
+          <h5 class="card-title">numeros de compte : <?php echo $value['id']; ?></h5>         
           <button class="btn btn-primary mb-2" type="button" data-toggle="collapse" data-target="#montantCible" aria-expanded="false" aria-controls="collapseExample">
             Montant du compte
           </button>

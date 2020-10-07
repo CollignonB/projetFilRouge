@@ -5,6 +5,8 @@ require_once "login.php";
 session_start();
 session_unset();
 
+$logMsg = "";
+
 if(!empty($_POST) && isset($_POST["login"])){
     try{
         $db = new PDO('mysql:host=localhost;dbname=banque_php','root');
@@ -33,9 +35,6 @@ if(!empty($_POST) && isset($_POST["login"])){
         }
     }
 }
-
-
-$logMsg = "";
 
 ?>
 <main class="container">

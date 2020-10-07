@@ -23,8 +23,6 @@ $query->execute([
 ]);
 $account = $query->fetch(PDO::FETCH_ASSOC);
 
-var_dump($_POST["accountAction"]);
-
 if(!empty($_POST) && isset($_POST["financialMvt"])){
     $query = $db->prepare(
         "INSERT INTO transferts (type, amount, account_id, date_transfert)
@@ -52,24 +50,6 @@ if(!empty($_POST) && isset($_POST["financialMvt"])){
     ]);
 }
 
-
-// if(isset($_POST["accountAction"]) === "dépôt" ){
-//     $newAmount = 0;
-//     $newAmount = $account["montant"] + $_POST["amount"];
-// }elseif(isset($_POST["accountAction"]) === "retrait" ){
-//     $newAmount = 0;
-//     $newAmount = $account["montant"] - $_POST["amount"];
-// }
-
-// if(!empty($_POST) && isset($_POST["financialMvt"])){
-//     $request = $db->prepare(
-//         "UPDATE accounts SET montant = :newAmount WHERE accounts.id = :accountId"
-//     );
-//     $request->execute([
-//         "newAmount"=>$newAmount,
-//         "accountId"=>$account["id"]
-//     ]);
-// }
 ?>
 <main class="container">
   <h2>Mouvement sur le compte</h2>
