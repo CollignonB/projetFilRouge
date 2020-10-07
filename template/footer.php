@@ -1,5 +1,5 @@
 </main>
-  <footer>
+  <footer class="mt-4 mb-0">
     <div class="jumbotron jumbotron-fluid mb-0 bg-primary">
       <div class="container">
         <p class="lead text-white">Tout droit réservé Collignon Baptiste</p>

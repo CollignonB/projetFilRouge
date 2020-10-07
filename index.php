@@ -12,10 +12,6 @@ try{
 }
 
 $query = $db->prepare(
-  // "SELECT * FROM accounts as a
-  // INNER JOIN users as u
-  // ON u.id = a.user_id
-  // WHERE u.id = :userid"
   "SELECT a.id, a_t.name, a.number, a.montant FROM `account_types` as a_t
   INNER JOIN accounts as a 
   ON a_t.id = a.account_type_id
@@ -43,15 +39,15 @@ require_once "acounts.php";
 
       <div class="card mb-4 col-lg-3 mr-4 col-sm-12 col-md-5">
         <div class="card-header">
-         <a href="account.php?id=<?php echo $value["id"] ?>"><?php echo $value["name"] ?></a>
+         <a href="account.php?id=<?php echo $value["id"] ?>"><?php echo $value["name"]; ?></a>
         </div>
         <div class="card-body">
-          <h5 class="card-title">numeros de compte : <?php echo $value['number'] ?></h5>         
+          <h5 class="card-title">numeros de compte : <?php echo $value['number']; ?></h5>         
           <button class="btn btn-primary mb-2" type="button" data-toggle="collapse" data-target="#montantCible" aria-expanded="false" aria-controls="collapseExample">
             Montant du compte
           </button>
-          <p class="card-text collapse" id="montantCible"><?php echo $value['montant'] ?>€</p>
-            <a class="btn btn-primary" href="mouvement.php">Dépôt/Retrait</a>
+          <p class="card-text collapse" id="montantCible"><?php echo $value['montant']; ?>€</p>
+            <a class="btn btn-primary" href="mouvement.php?id=<?php echo $value['id']; ?>">Dépôt/Retrait</a>
           <button class="btn btn-danger mt-2" onclick="deleteAccount()">Supprimer le compte</button>
         </div>
       </div>

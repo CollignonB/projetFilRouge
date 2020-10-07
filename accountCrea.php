@@ -23,7 +23,7 @@ if(isset($_POST["amount"]) && !empty($_POST["amount"]) && $_POST["amount"] >= 50
 else {
   $error .= "Montant minum 50 euros !";
 }
-var_dump($_SESSION["get_informed"]);
+// var_dump($_SESSION["get_informed"]);
 
 ?>
 
