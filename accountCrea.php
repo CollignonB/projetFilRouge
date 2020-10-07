@@ -1,8 +1,11 @@
 <?php 
-
 include "template/nav.php";
 include "template/header.php";
-
+session_start();
+session_start();
+if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
+  header("location:connection.php");
+}
 $error = "";
 
 $accountData = ["Nom du compte","Type du compte", "montant du premier dépot"];
@@ -20,7 +23,7 @@ if(isset($_POST["amount"]) && !empty($_POST["amount"]) && $_POST["amount"] >= 50
 else {
   $error .= "Montant minum 50 euros !";
 }
-
+var_dump($_SESSION["get_informed"]);
 
 ?>
 

@@ -1,4 +1,10 @@
 <?php 
+session_start();
+if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
+  header("location:connection.php");
+}
+
+
 include "template/nav.php";
 include "template/header.php";
 require_once "acounts.php";
@@ -29,7 +35,6 @@ require_once "acounts.php";
     <?php endforeach; ?>
     </div>
 
-<script src="js/main.js"></script>
 <?php 
 include "template/footer.php";
-?>
+?> 
