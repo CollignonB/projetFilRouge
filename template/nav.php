@@ -33,6 +33,7 @@
     <?php 
     session_start();
       if(!empty($_SESSION) && isset($_SESSION["user"])): ?>
+        <a class="nav-link" href="myInformation.php">Mes Informations</a>
         <a class="nav-link" href="connection.php" >Déconnexion</a>
       <?php else: ?>
         <a class="nav-link" href="connection.php">Connexion</a>

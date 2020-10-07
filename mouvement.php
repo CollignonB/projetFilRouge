@@ -70,7 +70,6 @@ if(!empty($_POST) && isset($_POST["financialMvt"])){
       </form>
     </div>
   </div>
-<?php echo $account['montant']; ?>
 <?php 
 include "template/footer.php";
 ?>

@@ -30,7 +30,7 @@ else {
   $error .= "Montant minum 50 euros !";
 }
 
-switch(isset($_POST["accountType"])){
+switch(isset(htmlspecialchars($_POST["accountType"]))){
   case "PEL":
     $accountType = 1;
     break;
@@ -52,8 +52,8 @@ if(!empty($_POST) && isset($_POST["accountCrea"])){
 
   $query->execute([
     "userId" => $_SESSION["user"]["id"],
-    "account_type_id" => $accountType,
-    "montant" => $_POST["amount"]
+    "account_type_id" => htmlspecialchars($accountType),
+    "montant" => htmlspecialchars($_POST["amount"])
   ]);
 }
 

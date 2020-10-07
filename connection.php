@@ -20,7 +20,7 @@ if(!empty($_POST) && isset($_POST["login"])){
         WHERE login = :pseudo"
     );
     $query->execute([
-        "pseudo"=>$_POST["pseudo"]
+        "pseudo"=>htmlspecialchars($_POST["pseudo"])
     ]);
     $user = $query->fetch(PDO::FETCH_ASSOC);
     
