@@ -3,6 +3,10 @@
 include "template/nav.php";
 include "template/header.php";
 
+session_start();
+if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
+  header("location:connection.php");
+}
 ?>
 
 <main class="container">
