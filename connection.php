@@ -2,28 +2,30 @@
 include "template/nav.php";
 include "template/header.php";
 require_once "login.php";
+include "model/connectionModel.php";
+include "model/userModel.php";
 
 session_unset();
 
 $logMsg = "";
 
 if(!empty($_POST) && isset($_POST["login"])){
-    try{
-        $db = new PDO('mysql:host=localhost;dbname=banque_php','root');
-    }catch(PDOException $e){
-        print"Erreur !: " . $e->getMessage() . "</br>";
-        die();
-    }
+    // try{
+    //     $db = new PDO('mysql:host=localhost;dbname=banque_php','root');
+    // }catch(PDOException $e){
+    //     print"Erreur !: " . $e->getMessage() . "</br>";
+    //     die();
+    // }
     
-    $query = $db->prepare(
-        "SELECT * FROM users
-        WHERE login = :pseudo"
-    );
-    $query->execute([
-        "pseudo"=>htmlspecialchars($_POST["pseudo"])
-    ]);
-    $user = $query->fetch(PDO::FETCH_ASSOC);
-    
+    // $query = $db->prepare(
+    //     "SELECT * FROM users
+    //     WHERE login = :pseudo"
+    // );
+    // $query->execute([
+    //     "pseudo"=>htmlspecialchars($_POST["pseudo"])
+    // ]);
+    // $user = $query->fetch(PDO::FETCH_ASSOC);
+    $user = get_user_pseudo($db, htmlspecialchars($_POST["pseudo"]));
     if($user) {
         if(password_verify($_POST["password"], $user["password"])) {            
             $_SESSION["user"] = $user;

@@ -1,13 +1,15 @@
 <?php 
 include "template/nav.php";
 include "template/header.php";
+include "model/connectionModel.php";
+include "model/accountsModel.php";
 
-try{
-  $db = new PDO('mysql:host=localhost;dbname=banque_php','root');
-}catch(PDOException $e){
-  print"Erreur !: " . $e->getMessage() . "</br>";
-  die();
-}
+// try{
+//   $db = new PDO('mysql:host=localhost;dbname=banque_php','root');
+// }catch(PDOException $e){
+//   print"Erreur !: " . $e->getMessage() . "</br>";
+//   die();
+// }
 
 if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
   header("location:connection.php");
@@ -30,7 +32,7 @@ else {
   $error .= "Montant minum 50 euros !";
 }
 
-switch(isset(htmlspecialchars($_POST["accountType"]))){
+switch((htmlspecialchars($_POST["accountType"]))){
   case "PEL":
     $accountType = 1;
     break;
@@ -45,16 +47,18 @@ switch(isset(htmlspecialchars($_POST["accountType"]))){
       break;
 }
 if(!empty($_POST) && isset($_POST["accountCrea"])){
-  $query = $db->prepare(
-    "INSERT INTO accounts (date_crea, user_id, account_type_id, montant)
-    VALUES (current_timestamp(), :userId, :account_type_id, :montant)"
-  );
+  // $query = $db->prepare(
+  //   "INSERT INTO accounts (date_crea, user_id, account_type_id, montant)
+  //   VALUES (current_timestamp(), :userId, :account_type_id, :montant)"
+  // );
 
-  $query->execute([
-    "userId" => $_SESSION["user"]["id"],
-    "account_type_id" => htmlspecialchars($accountType),
-    "montant" => htmlspecialchars($_POST["amount"])
-  ]);
+  // $query->execute([
+  //   "userId" => $_SESSION["user"]["id"],
+  //   "account_type_id" => htmlspecialchars($accountType),
+  //   "montant" => htmlspecialchars($_POST["amount"])
+  // ]);
+
+  add_new_account($db, $_SESSION["user"]["id"], htmlspecialchars($accountType), $_POST["amount"]);
 }
 
 ?>

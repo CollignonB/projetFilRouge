@@ -1,52 +1,61 @@
 <?php 
 include "template/nav.php";
 include "template/header.php";
+include "model/connectionModel.php";
+include "model/movementModel.php";
+include "model/accountsModel.php";
 
 if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
   header("location:connection.php");
 }
 
-try{
-  $db = new PDO('mysql:host=localhost;dbname=banque_php','root');
-}catch(PDOException $e){
-  print"Erreur !: " . $e->getMessage() . "</br>";
-  die();
-}
+// try{
+//   $db = new PDO('mysql:host=localhost;dbname=banque_php','root');
+// }catch(PDOException $e){
+//   print"Erreur !: " . $e->getMessage() . "</br>";
+//   die();
+// }
 
-$query = $db->prepare(
-    "SELECT * FROM accounts
-    WHERE id = :accountid"
-);
-$query->execute([
-    "accountid" => $_GET["id"]
-]);
-$account = $query->fetch(PDO::FETCH_ASSOC);
+// $query = $db->prepare(
+//     "SELECT * FROM accounts
+//     WHERE id = :accountid"
+// );
+// $query->execute([
+//     "accountid" => $_GET["id"]
+// ]);
+// $account = $query->fetch(PDO::FETCH_ASSOC);
+
+$account = get_account($db, $_GET["id"]);
 
 if(!empty($_POST) && isset($_POST["financialMvt"])){
-    $query = $db->prepare(
-        "INSERT INTO transferts (type, amount, account_id, date_transfert)
-        VALUES (:typeT, :amount, :account_id, current_timestamp())"
-    );
-    $query->execute([
-        "typeT"=>$_POST["accountAction"],
-        "amount"=>$_POST["amount"],
-        "account_id"=>$account["id"]
-    ]);
-    $newAmount = $account["montant"];
-
+    // $query = $db->prepare(
+    //     "INSERT INTO transferts (type, amount, account_id, date_transfert)
+    //     VALUES (:typeT, :amount, :account_id, current_timestamp())"
+    // );
+    // $query->execute([
+    //     "typeT"=>$_POST["accountAction"],
+    //     "amount"=>$_POST["amount"],
+    //     "account_id"=>$account["id"]
+    // ]);
+    add_new_transfert($db, $_POST["accountAction"], $_POST["amount"], $account["id"]);
+    $new_amount = $account["montant"];
+      var_dump($_POST);
     if(isset($_POST["accountAction"]) === "dépôt" ){
-        $newAmount += $_POST["amount"];
-    }else{
-        $newAmount -= $_POST["amount"];
+        // $new_amount += $_POST["amount"];
+        var_dump($_POST["accountAction"]);
+    }elseif(isset($_POST["accountAction"]) === "retrait" ){
+        // $new_amount -= $_POST["amount"];
+        var_dump($_POST["accountAction"]);
     }
 
-    $request = $db->prepare(
-        "UPDATE accounts SET montant = :newAmount WHERE accounts.id = :accountId"
-    );
-    $request->execute([
-        "newAmount"=>$newAmount,
-        "accountId"=>$account["id"]
-    ]);
+    // $request = $db->prepare(
+    //     "UPDATE accounts SET montant = :newAmount WHERE accounts.id = :accountId"
+    // );
+    // $request->execute([
+    //     "newAmount"=>$new_amount,
+    //     "accountId"=>$account["id"]
+    // ]);
+      update_amount($db, $new_amount, $account["id"]);
 }
 
 ?>

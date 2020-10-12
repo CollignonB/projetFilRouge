@@ -1,32 +1,34 @@
 <?php 
 include "template/nav.php";
 include "template/header.php";
+include "model/connectionModel.php";
+include "model/accountsModel.php";
 
 if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
   header("location:connection.php");
 }
 
-try{
-  $db = new PDO('mysql:host=localhost;dbname=banque_php','root');
-}catch(PDOException $e){
-  print"Erreur !: " . $e->getMessage() . "</br>";
-  die();
-}
+// try{
+//   $db = new PDO('mysql:host=localhost;dbname=banque_php','root');
+// }catch(PDOException $e){
+//   print"Erreur !: " . $e->getMessage() . "</br>";
+//   die();
+// }
 
-$query = $db->prepare(
-  "SELECT t.type, t.amount, t.date_transfert FROM `transferts` as t 
-  INNER JOIN accounts as a ON a.id = t.account_id 
-  INNER JOIN account_types as a_t ON a_t.id = a.account_type_id 
-  WHERE a.id = :userId 
-  ORDER BY date_transfert DESC;"
-);
+// $query = $db->prepare(
+//   "SELECT t.type, t.amount, t.date_transfert FROM `transferts` as t 
+//   INNER JOIN accounts as a ON a.id = t.account_id 
+//   INNER JOIN account_types as a_t ON a_t.id = a.account_type_id 
+//   WHERE a.id = :userId 
+//   ORDER BY date_transfert DESC;"
+// );
 
-$query->execute([
-  "userId" => $_GET["id"]
-]);
+// $query->execute([
+//   "userId" => $_GET["id"]
+// ]);
 
-$data = $query->fetchAll(PDO::FETCH_ASSOC);
-
+// $data = $query->fetchAll(PDO::FETCH_ASSOC);
+$data = get_last_operations($db, $_GET["id"]);
 ?>
 
 <main class="container">
