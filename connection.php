@@ -6,25 +6,12 @@ include "model/connectionModel.php";
 include "model/userModel.php";
 
 session_unset();
+session_destroy();
 
 $logMsg = "";
 
 if(!empty($_POST) && isset($_POST["login"])){
-    // try{
-    //     $db = new PDO('mysql:host=localhost;dbname=banque_php','root');
-    // }catch(PDOException $e){
-    //     print"Erreur !: " . $e->getMessage() . "</br>";
-    //     die();
-    // }
-    
-    // $query = $db->prepare(
-    //     "SELECT * FROM users
-    //     WHERE login = :pseudo"
-    // );
-    // $query->execute([
-    //     "pseudo"=>htmlspecialchars($_POST["pseudo"])
-    // ]);
-    // $user = $query->fetch(PDO::FETCH_ASSOC);
+
     $user = get_user_pseudo($db, htmlspecialchars($_POST["pseudo"]));
     if($user) {
         if(password_verify($_POST["password"], $user["password"])) {            

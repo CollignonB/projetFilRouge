@@ -2,7 +2,6 @@
 
 include "template/nav.php";
 include "template/header.php";
-// require_once "acounts.php";
 include "model/connectionModel.php";
 include "model/accountsModel.php";
 
