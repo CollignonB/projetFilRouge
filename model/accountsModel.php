@@ -68,4 +68,15 @@
             "accountId"=>$account_id
         ]);
     }
+
+    function delete_account($db, $account_id){
+        $query = $db->prepare(
+            "DELETE FROM accounts
+            WHERE id = :account_ID"
+        );
+
+        $query->execute([
+            "account_ID"=>$account_id
+        ]);
+    }
 ?>
