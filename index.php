@@ -10,9 +10,7 @@ if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
 }
 
 
-// $account = get_accounts($db, $_SESSION["user"]["id"]);
-
-$datas = getLastOp($db, $_SESSION["user"]["id"]);
+$datas = get_accounts($db, $_SESSION["user"]["id"]);
 
 ?>
 
