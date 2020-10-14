@@ -11,7 +11,8 @@
             WHERE a.user_id = :user_id && t.id = (
                 SELECT MAX(t2.id)
                 FROM transferts AS t2
-                WHERE t2.account_id = a.id)"
+                WHERE t2.account_id = a.id)
+            ORDER BY a.id"
         );
         $query->execute([
             "user_id"=> $user_id
