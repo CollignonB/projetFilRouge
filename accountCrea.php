@@ -4,12 +4,7 @@ include "template/header.php";
 include "model/connectionModel.php";
 include "model/accountsModel.php";
 
-// try{
-//   $db = new PDO('mysql:host=localhost;dbname=banque_php','root');
-// }catch(PDOException $e){
-//   print"Erreur !: " . $e->getMessage() . "</br>";
-//   die();
-// }
+
 
 if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
   header("location:connection.php");

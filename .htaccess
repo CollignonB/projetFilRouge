@@ -560,7 +560,7 @@ AddDefaultCharset utf-8
 #
 # You should leave the following uncommented, as you shouldn't allow anyone to
 # surf through every directory on your server (which may include rather
-# private places such as the CMS's directories).
+# protected places such as the CMS's directories).
 
 <IfModule mod_autoindex.c>
     Options -Indexes
@@ -572,7 +572,7 @@ AddDefaultCharset utf-8
 # visible content from within the `/.well-known/` hidden directory.
 #
 # These types of files usually contain user preferences or the preserved state
-# of a utility, and can include rather private places like, for example, the
+# of a utility, and can include rather protected places like, for example, the
 # `.git` or `.svn` directories.
 #
 # The `/.well-known/` directory represents the standard (RFC 5785) path prefix

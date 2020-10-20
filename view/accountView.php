@@ -24,7 +24,6 @@
           <p class="card-text collapse" id="operationCible<?php echo $value["account_ID"]?>"><?php echo $value["type"] . "/" . $value["transfert_amount"] . "€</br>" . $value["date_transfert"] ?></p>
           <a class="btn btn-primary" href="mouvement.php?id=<?php echo $value['account_ID']; ?>">Dépôt/Retrait</a>
           <button class="btn btn-danger mt-2" onclick="">Supprimer le compte</button>
-          <!-- trouver le moyen de lancer la fonction sur le click du btn -->
         </div>
       </div>
     <?php endforeach; ?>

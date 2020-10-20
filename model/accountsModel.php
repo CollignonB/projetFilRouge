@@ -1,4 +1,9 @@
 <?php 
+class AccountModel {
+
+    public function __construct() {
+        $this->db = new PDO('mysql:host=localhost;dbname=banque_php','root');
+    }
     function get_accounts($db, $user_id){
 
         $query = $db->prepare(
@@ -79,4 +84,5 @@
             "account_ID"=>$account_id
         ]);
     }
+}
 ?>

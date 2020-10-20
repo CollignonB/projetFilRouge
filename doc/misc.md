@@ -129,8 +129,8 @@ The `/robots.txt` file is not intended for access control, so don't try to
 use it as such. Think of it as a "No Entry" sign, rather than a locked door.
 URLs disallowed by the `robots.txt` file might still be indexed without being
 crawled, and the content from within the `robots.txt` file can be viewed by
-anyone, potentially disclosing the location of your private content! So, if
-you want to block access to private content, use proper authentication instead.
+anyone, potentially disclosing the location of your protected content! So, if
+you want to block access to protected content, use proper authentication instead.
 
 For more information about `robots.txt`, please see:
 
