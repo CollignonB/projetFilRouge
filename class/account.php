@@ -1,6 +1,8 @@
 <?php 
 
 class Account {
+
+    protected int $id;
     protected int $amount;
     protected User $user;
     protected string $date_crea;
