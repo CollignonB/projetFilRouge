@@ -52,8 +52,8 @@ class User{
     }
 
     //function that allow user to connect to sthe site
-    //return error messageif wrong login/password couple
-    //maybe use a method of userModel to get login/password
+    //return error message if wrong login/password couple
+    //use the method userModel->get_usr_by_login to get login/password
     public function connection (string $login, string $password){
         if ($this->login === $login && $this->password === $password){
             $_SESSION["user"] = $this;

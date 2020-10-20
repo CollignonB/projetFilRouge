@@ -1,22 +1,23 @@
 <?php 
 class UserModel{
-    private
+    private $db;
 
     public function __construct() {
         $this->db = new PDO('mysql:host=localhost;dbname=banque_php','root');
     }
-
-    public function get_user_pseudo($db, $pseudo){
+    // get user information based on is login
+    public function get_user_by_login(User $data){
         $query = $db->prepare(
             "SELECT * FROM users
-            WHERE login = :pseudo"
+            WHERE login = :login"
         );
         $query->execute([
-            "pseudo"=>$pseudo
+            "login"=>$data->getLogin();
         ]);
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 
+    // get all users form database
     public function get_users():array {
         $query = $this->db->query("
         SELECT * FROM users");
@@ -27,10 +28,11 @@ class UserModel{
         return $user;
     }
 
+    //add a user in database based on a User object
     public function addUser(User $data){
         $query = $this->db->prepare("
         INSERT INTO users(name, date_creation, login, password)
-        VALUES (:name, CURRENT_TIMESTAMP(), :login, :password)");
+        VALUES (:name, current_timestamp(), :login, :password)");
     }
     $result = $query->execute([
         "name" => $data->getName(),

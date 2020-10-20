@@ -18,6 +18,9 @@ class Transfert {
     public function setType(string $type){
         $this->type = $type;
     }
+    public function setAccount(array $data){
+        $this->account = new Account($data);
+    }
 
     public function getId(){
         return $this->id;
@@ -31,6 +34,21 @@ class Transfert {
     public function getType(){
         return $this->type;
     }
+    public function getAccount(){
+        return $this->account;
+    }
 
-    public function createTransfert(){}
+
+    private function hydrate(array $data){
+        foreach($data as $key => $value){
+            $method  = "set" . ucfirst($key);
+            if(method_exists($this, $method)){
+                $this->$method($value);
+            }
+        }
+    }
+
+    public function __construct($data){
+        $this->hydrate($data);
+    }
 }

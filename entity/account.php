@@ -20,6 +20,9 @@ class Account {
     public function setType (string $type) {
         $this->accountType = $type;
     }
+    public function setUser($data){
+        $this->user = new User($data);
+    }
 
     public function getAmount() {
         return $this->amount;
@@ -32,6 +35,9 @@ class Account {
     }
     public function getType() {
         return $this->accountType;
+    }
+    public function getUser(){
+        return $this->user;
     }
 
     private function hydrate(array $data){
