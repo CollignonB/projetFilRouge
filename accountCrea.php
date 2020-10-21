@@ -21,16 +21,17 @@ if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
 $error = "";
 
 $accountData = ["Nom du compte","Type du compte", "montant du premier dépot"];
-if(isset($_POST["accountName"]) && !empty($_POST["accountName"])){
-  $accountData[0] = htmlspecialchars($_POST["accountName"]);
+
+// if(isset($_POST["accountName"]) && !empty($_POST["accountName"])){
+//   $accountData[0] = htmlspecialchars($_POST["accountName"]);
+// }
+
+if(isset($_POST["account_type_id"]) && !empty($_POST["account_type_id"])){
+  $accountData[1] =  htmlspecialchars($_POST["account_type_id"]);
 }
 
-if(isset($_POST["accountType"]) && !empty($_POST["accountType"])){
-  $accountData[1] =  htmlspecialchars($_POST["accountType"]);
-}
-
-if(isset($_POST["amount"]) && !empty($_POST["amount"]) && $_POST["amount"] >= 50){
-  $accountData[2] = htmlspecialchars($_POST["amount"]);
+if(isset($_POST["montant"]) && !empty($_POST["montant"]) && $_POST["montant"] >= 50){
+  $accountData[2] = htmlspecialchars($_POST["montant"]);
 }
 else {
   $error .= "Montant minum 50 euros !";

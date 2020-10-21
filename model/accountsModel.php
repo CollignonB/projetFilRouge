@@ -51,7 +51,7 @@ class AccountModel {
           $query->execute([
               "userId" => $account->getUser()->getId(),
               "account_type_id" => $account->getAccount_type_id(),
-              "montant" => $account->getAmount()
+              "montant" => $account->getMontant()
               ]);
         }
             

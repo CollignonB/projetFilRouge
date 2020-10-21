@@ -2,7 +2,7 @@
   <div>
     <h2>Compte numéros : <?php echo $_GET["id"] ?></h2>
     <div>Type de compte : <?php echo $account->changeAccount_type(); ?></div>
-    <div>Montant sur ce compte : <?php echo $account->getAmount();?>€</div>
+    <div>Montant sur ce compte : <?php echo $account->getMontant();?>€</div>
     <div>
       <p>Dernières opérations sur ce compte : </br></p>
       <?php foreach($data as $key => $value):?>

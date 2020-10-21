@@ -21,12 +21,11 @@
       </form>
     </div>
     <div class="col-6" >
-      <?php if(empty($error)) : ?>
+      <?php if(empty($error)) :?>
         <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title"><?php echo $accountData[0] ?></h5>
-          <h6 class="card-subtitle mb-2 text-muted">Type de compte : <?php echo $accountData[1] ?></h6>
-          <p class="card-text">Montant : <?php echo $accountData[2] ?> €</p>
+          <h6 class="card-subtitle mb-2 text-muted">Type de compte : <?php echo $account->changeAccount_type(); ?></h6>
+          <p class="card-text">Montant : <?php echo $account->getMontant(); ?> €</p>
         </div>
       </div>
     </div>

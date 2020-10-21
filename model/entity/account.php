@@ -2,7 +2,7 @@
 
 class Account {
 
-    protected int $id;
+    protected ?int $id;
     protected int $montant;
     protected User $user;
     protected string $date_crea;
@@ -25,7 +25,7 @@ class Account {
         $this->id = $id;
     }
 
-    public function getAmount() {
+    public function getMontant() {
         return $this->montant;
     }
     public function getDate() {
