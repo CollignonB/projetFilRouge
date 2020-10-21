@@ -65,30 +65,14 @@ class AccountModel {
                 ]);
             }
                 
-        function delete_account($db, $account_id){
-            $query = $db->prepare(
+        function delete_account(Account $account){
+            $query = $this->db->prepare(
             "DELETE FROM accounts
             WHERE id = :account_ID"
             );
         
             $query->execute([
-                "account_ID"=>$account_id
+                "account_ID"=>$account->getId()
                 ]);
-        }
-
-        public function get_last_operations($account_id){
-            $query = $this->db->prepare(
-                "SELECT t.type, t.amount, t.date_transfert FROM `transferts` as t 
-                INNER JOIN accounts as a ON a.id = t.account_id 
-                INNER JOIN account_types as a_t ON a_t.id = a.account_type_id 
-                WHERE a.id = :userId 
-                ORDER BY date_transfert DESC;"
-              );
-                
-              $query->execute([
-                "userId" => $account_id
-              ]);
-                
-              return $query->fetchAll(PDO::FETCH_ASSOC);
         }
 }

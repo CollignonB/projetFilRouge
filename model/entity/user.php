@@ -50,17 +50,4 @@ class User{
     public function __construct(array $data){
         $this->hydrate($data);
     }
-
-    //function that allow user to connect to sthe site
-    //return error message if wrong login/password couple
-    //use the method userModel->get_usr_by_login to get login/password
-    // foutre ça dans le controler
-    // public function connection (string $login, string $password){
-    //     if ($this->login === $login && $this->password === $password){
-    //         $_SESSION["user"] = $this;
-    //         header("location:index.php");
-    //     }else{
-    //         return "Identifiant ou mot de passe incorect";
-    //     }
-    // }
 }

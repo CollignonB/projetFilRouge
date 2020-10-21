@@ -14,12 +14,7 @@ if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
 $transfertModel = new TransfertModel();
 
 if(!empty($_POST) && isset($_POST["financialMvt"])){
-  var_dump($_POST);
-  echo "</br>--------------------</br>";
   $transfert = new Transfert($_POST);
-  echo "transfert :</br>";
-  var_dump($transfert);
-  echo "</br>----------------</br>";
   
   $transfertModel->add_new_transfert($transfert, $_GET["id"]);
 
