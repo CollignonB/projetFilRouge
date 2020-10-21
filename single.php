@@ -12,6 +12,8 @@ if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
 $accountModel = new AccountModel();
 
 $account = new Account($accountModel->get_account($_GET["id"]));
+var_dump($account);
+
 
 $data = $accountModel->get_last_operations($db, $_GET["id"]);
 

@@ -5,19 +5,19 @@
     <?php if(!empty($error)) { echo "<p class='alert alert-danger'>$error</p>";}?>
       <form action="accountCrea.php" method="post">
         <div class="form-group">
-          <label for="accountType">Type de Compte</label>
-          <select class="form-control" id="accountType" name="accountType">
-            <option>Compte Courant</option>
-            <option>PEL</option>
-            <option>Livret A</option>
-            <option>PER</option>
+          <label for="account_type_id">Type de Compte</label>
+          <select class="form-control" id="account_type_id" name="account_type_id">
+            <option value="4">Compte Courant</option>
+            <option value="1">PEL</option>
+            <option value="2">Livret A</option>
+            <option value="3">PER</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="amount">Premier Dépôt</label>
-          <input type="number" class="form-control" id="amount" name ="amount"  min="50">
+          <label for="montant">Premier Dépôt</label>
+          <input type="number" class="form-control" id="montant" name ="montant" min="50">
         </div>
-        <button type="submit" class="btn btn-primary" name="accountCrea" >Créer</button>
+        <button type="submit" class="btn btn-primary" name="accountCrea" value="Enregistrer">Créer</button>
       </form>
     </div>
     <div class="col-6" >

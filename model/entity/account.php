@@ -15,8 +15,8 @@ class Account {
     public function setDate_crea(string $date_crea){
         $this->date_crea = $date_crea;
     }
-    public function setUser($data){
-        $this->user = new User($data);
+    public function setUser(User $user){
+        $this->user = $user;
     }
     public function setAccount_type_id($id){
         $this->account_type_id = $id;
@@ -30,9 +30,6 @@ class Account {
     }
     public function getDate() {
         return $this->date_crea;
-    }
-    public function getType() {
-        return $this->accountType;
     }
     public function getUser(){
         return $this->user;

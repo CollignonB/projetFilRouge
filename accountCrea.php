@@ -4,8 +4,16 @@ include "template/header.php";
 include "model/connectionModel.php";
 include "model/accountsModel.php";
 include "model/entity/account.php";
+include "model/entity/user.php";
 
+$accountModel = new AccountModel();
 
+// echo "POST : ";
+// var_dump($_POST);
+// echo "</br> ------------------- </br>";
+// echo "SESSION : ";
+// var_dump(($_SESSION["user"]));
+// echo "</br>---------------</br>";
 
 if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
   header("location:connection.php");
@@ -28,22 +36,11 @@ else {
   $error .= "Montant minum 50 euros !";
 }
 
-switch((htmlspecialchars($_POST["accountType"]))){
-  case "PEL":
-    $accountType = 1;
-    break;
-    case "Livret A":
-      $accountType = 2;
-    break;
-    case "PER":
-      $accountType = 3;
-    break;
-    case "Compte Courant":
-      $accountType = 4;
-      break;
-}
 if(!empty($_POST) && isset($_POST["accountCrea"])){
-  add_new_account($db, $_SESSION["user"]["id"], htmlspecialchars($accountType), $_POST["amount"]);
+  $account = new Account($_POST);
+  $account->setUser(unserialize($_SESSION["user"]));
+  // var_dump($account);
+  $accountModel->add_new_account($account);
 }
 include "view/accountCreaView.php";
 include "template/footer.php";

@@ -43,14 +43,14 @@ class AccountModel {
 
     // add a new account based on a Account Object
     public function add_new_account(Account $account){
-        $query = $db->prepare(
+        $query = $this->db->prepare(
             "INSERT INTO accounts (date_crea, user_id, account_type_id, montant)
             VALUES (current_timestamp(), :userId, :account_type_id, :montant)"
           );
           
           $query->execute([
               "userId" => $account->getUser()->getId(),
-              "account_type_id" => $account->getType(),
+              "account_type_id" => $account->getAccount_type_id(),
               "montant" => $account->getAmount()
               ]);
         }
