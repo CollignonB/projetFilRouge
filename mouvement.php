@@ -2,27 +2,38 @@
 include "template/nav.php";
 include "template/header.php";
 include "model/connectionModel.php";
-include "model/movementModel.php";
+include "model/transfertModel.php";
+include "model/entity/transfert.php";
 include "model/accountsModel.php";
+include "model/entity/account.php";
 
 if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
   header("location:connection.php");
 }
 
-$account = get_account($db, $_GET["id"]);
+$transfertModel = new TransfertModel();
 
 if(!empty($_POST) && isset($_POST["financialMvt"])){
+  var_dump($_POST);
+  echo "</br>--------------------</br>";
+  $transfert = new Transfert($_POST);
+  echo "transfert :</br>";
+  var_dump($transfert);
+  echo "</br>----------------</br>";
+  
+  $transfertModel->add_new_transfert($transfert, $_GET["id"]);
 
-  add_new_transfert($db, $_POST["accountAction"], $_POST["amount"], $account["id"]);
-  $new_amount = floatval($account["montant"]);
+  $accountModel = new AccountModel();
+  $account = new Account($accountModel->get_account($_GET["id"]));
+  $new_amount = floatval($account->getMontant());
 
-  if($_POST["accountAction"] === "débit" ){
+  if($_POST["type"] === "débit" ){
     $new_amount -= floatval($_POST["amount"]);
-  }elseif($_POST["accountAction"] === "crédit" ){
+  }elseif($_POST["type"] === "crédit" ){
     $new_amount += floatval($_POST["amount"]);
   }
-
-  update_amount($db, $new_amount, $account["id"]);
+  $accountModel->update_amount($account, $new_amount);
+  header("location:index.php");
 }
 
 include "view/mouvementView.php";

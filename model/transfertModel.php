@@ -1,5 +1,5 @@
 <?php 
-class MovementModel {
+class TransfertModel {
 
     private $db;
 
@@ -8,15 +8,15 @@ class MovementModel {
     }
 
     // create a new transfert in database
-    public function add_new_transfert(Transfert $data){
-        $query = $db->prepare(
+    public function add_new_transfert(Transfert $data, $accountId){
+        $query = $this->db->prepare(
             "INSERT INTO transferts (type, amount, account_id, date_transfert)
             VALUES (:typeT, :amount, :account_id, current_timestamp())"
         );
         $query->execute([
-            "typeT"=>$data->getType();,
-            "amount"=>$data_>getAmount(),
-            "account_id"=>$data->getAcount()->getId();
+            "typeT"=>$data->getType(),
+            "amount"=>$data->getAmount(),
+            "account_id"=>$accountId
         ]);
     }
 } 

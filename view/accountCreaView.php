@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
           <label for="montant">Premier Dépôt</label>
-          <input type="number" class="form-control" id="montant" name ="montant" min="50">
+          <input type="number" step="0.01" class="form-control" id="montant" name ="montant" min="50">
         </div>
         <button type="submit" class="btn btn-primary" name="accountCrea" value="Enregistrer">Créer</button>
       </form>

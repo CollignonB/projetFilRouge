@@ -1,7 +1,6 @@
 <?php 
 include "template/nav.php";
 include "template/header.php";
-include "model/connectionModel.php";
 include "model/accountsModel.php";
 include "model/entity/account.php";
 
@@ -15,7 +14,7 @@ $account = new Account($accountModel->get_account($_GET["id"]));
 var_dump($account);
 
 
-$data = $accountModel->get_last_operations($db, $_GET["id"]);
+$data = $accountModel->get_last_operations($_GET["id"]);
 
 include "view/singleView.php";
 include "template/footer.php";

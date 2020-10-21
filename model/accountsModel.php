@@ -2,7 +2,7 @@
 class AccountModel {
 
     private $db;
-
+    
     public function __construct() {
         $this->db = new PDO('mysql:host=localhost;dbname=banque_php','root');
     }
@@ -55,8 +55,8 @@ class AccountModel {
               ]);
         }
             
-        function update_amount(Account $account, float $new_amount){
-            $request = $db->prepare(
+        public function update_amount(Account $account, float $new_amount){
+            $request = $this->db->prepare(
                 "UPDATE accounts SET montant = :newAmount WHERE accounts.id = :accountId"
             );
                 $request->execute([
@@ -76,8 +76,8 @@ class AccountModel {
                 ]);
         }
 
-        public function get_last_operations($db, $account_id){
-            $query = $db->prepare(
+        public function get_last_operations($account_id){
+            $query = $this->db->prepare(
                 "SELECT t.type, t.amount, t.date_transfert FROM `transferts` as t 
                 INNER JOIN accounts as a ON a.id = t.account_id 
                 INNER JOIN account_types as a_t ON a_t.id = a.account_type_id 
