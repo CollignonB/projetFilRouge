@@ -34,3 +34,21 @@ if(!empty($_POST) && isset($_POST["financialMvt"])){
 include "view/mouvementView.php";
 include "template/footer.php";
 ?>
+<!-- 
+// Begin Transaction
+$this->db->beginTransaction();
+
+// Fire Queries
+if(!$query_one->execute()){
+    $this->db->rollback();
+    // other clean-up goes here
+    return;
+}
+
+if(!$query_two->execute()){
+    $this->db->rollback();
+    // other clean-up goes here
+    return; 
+}
+
+$this->db->commit(); -->
