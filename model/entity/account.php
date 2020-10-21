@@ -6,14 +6,12 @@ class Account {
     protected int $amount;
     protected User $user;
     protected string $date_crea;
-    protected string $accountType;
+    protected string $account_type_id;
     
     public function setAmount(int $amount){
         $this->amount = $amount;
     }
-    public function setUser (User $user){
-        $this->user = $user;
-    }
+
     public function setDate(string $date_crea){
         $this->date_crea = $date_crea;
     }
@@ -23,12 +21,12 @@ class Account {
     public function setUser($data){
         $this->user = new User($data);
     }
+    public function setAccount_type_id($id){
+        $this->account_type_id = $id;
+    }
 
     public function getAmount() {
         return $this->amount;
-    }
-    public function getUSer() {
-        return $this->user;
     }
     public function getDate() {
         return $this->date_crea;
@@ -39,6 +37,10 @@ class Account {
     public function getUser(){
         return $this->user;
     }
+    public function getAccount_type_id(){
+        return $this->account_type_id;
+    }
+
     // /!\ 
     private function hydrate(array $data){
         foreach($data as $key => $value){

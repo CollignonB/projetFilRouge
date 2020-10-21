@@ -18,10 +18,9 @@ if(!empty($_POST) && isset($_POST["login"])){
     $user = $userModel->get_user_by_login($_POST["pseudo"]);
     echo "</br>--------------</br>";
     var_dump($user);
-
     if($user) {
         if(password_verify($_POST["password"], $user->getPassword())) {            
-            $_SESSION["user"] = $user;
+            $_SESSION["user"] = serialize($user);
             header("location:index.php");
         }else{
             $logMsg = "identifiant ou mot de passe incorect";

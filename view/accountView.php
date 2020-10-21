@@ -4,12 +4,12 @@
 
     <?php 
     foreach($datas as $key => $value): 
-
+      var_dump($value);
     ?>
 
       <div class="card mb-4 col-lg-3 mr-4 col-sm-12 col-md-5">
         <div class="card-header">
-         <a href="single.php?id=<?php echo $value["account_ID"] ?>&type=<?php echo $value["name"]?>&amount=<?php echo $value["montant"]?>"><?php echo $value["name"]; ?></a>
+         <a href="single.php?id=<?php echo $value["account_ID"] ?>"><?php echo $value["name"]?></a>
         </div>
         <div class="card-body">
           <h5 class="card-title">numeros de compte : <?php echo $value['account_ID']; ?></h5>         
