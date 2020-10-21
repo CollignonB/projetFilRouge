@@ -7,7 +7,7 @@ class AccountModel {
         $this->db = new PDO('mysql:host=localhost;dbname=banque_php','root');
     }
 
-    //get all accounts datas
+    //get all accounts
     public function get_accounts(User $data){
 
         $query = $this->db->prepare(

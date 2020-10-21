@@ -11,6 +11,7 @@ if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
 }
 
 $user = unserialize($_SESSION["user"]);
+
 $accountModel = new AccountModel();
 $datas = $accountModel->get_accounts($user);
 
