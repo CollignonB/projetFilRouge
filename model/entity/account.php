@@ -39,7 +39,7 @@ class Account {
     public function getUser(){
         return $this->user;
     }
-
+    // /!\ 
     private function hydrate(array $data){
         foreach($data as $key => $value){
             $method  = "set" . ucfirst($key);

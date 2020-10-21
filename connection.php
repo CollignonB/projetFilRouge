@@ -1,20 +1,26 @@
 <?php
 include "template/nav.php";
 include "template/header.php";
-require_once "login.php";
 include "model/connectionModel.php";
 include "model/userModel.php";
+include "model/entity/user.php";
 
 session_unset();
 // session_destroy();
 
-$logMsg = "";
+var_dump($_POST);
 
 if(!empty($_POST) && isset($_POST["login"])){
+    
+    $logMsg = "";
+    $userModel = new UserModel();
 
-    $user = get_user_pseudo($db, htmlspecialchars($_POST["pseudo"]));
+    $user = $userModel->get_user_by_login($_POST["pseudo"]);
+    echo "</br>--------------</br>";
+    var_dump($user);
+
     if($user) {
-        if(password_verify($_POST["password"], $user["password"])) {            
+        if(password_verify($_POST["password"], $user->getPassword())) {            
             $_SESSION["user"] = $user;
             header("location:index.php");
         }else{
