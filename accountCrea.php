@@ -3,6 +3,7 @@ include "template/nav.php";
 include "template/header.php";
 include "model/connectionModel.php";
 include "model/accountsModel.php";
+include "model/entity/account.php";
 
 
 

@@ -10,23 +10,8 @@ if(empty($_SESSION["user"]) || !isset($_SESSION["user"])){
 }
 
 $accountModel = new AccountModel();
-$table = $accountModel->get_account($_GET["id"]);
 
-$account_type = "";
-switch ($table["account_type_id"]) {
-  case 1:
-      $account_type = "PEL";
-      break;
-  case 2: 
-      $account_type = "Livret A";
-      break;
-  case 3:
-      $account_type = "PER";
-      break;
-  case 4:
-      $account_type = "Compte Courant";
-      break;
-}
+$account = new Account($accountModel->get_account($_GET["id"]));
 
 $data = $accountModel->get_last_operations($db, $_GET["id"]);
 

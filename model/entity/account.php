@@ -3,20 +3,17 @@
 class Account {
 
     protected int $id;
-    protected int $amount;
+    protected int $montant;
     protected User $user;
     protected string $date_crea;
     protected string $account_type_id;
     
-    public function setAmount(int $amount){
-        $this->amount = $amount;
+    public function setMontant(int $amount){
+        $this->montant = $amount;
     }
 
-    public function setDate(string $date_crea){
+    public function setDate_crea(string $date_crea){
         $this->date_crea = $date_crea;
-    }
-    public function setType (string $type) {
-        $this->accountType = $type;
     }
     public function setUser($data){
         $this->user = new User($data);
@@ -24,9 +21,12 @@ class Account {
     public function setAccount_type_id($id){
         $this->account_type_id = $id;
     }
+    public function setId($id){
+        $this->id = $id;
+    }
 
     public function getAmount() {
-        return $this->amount;
+        return $this->montant;
     }
     public function getDate() {
         return $this->date_crea;
@@ -40,8 +40,10 @@ class Account {
     public function getAccount_type_id(){
         return $this->account_type_id;
     }
+    public function getId(){
+        return $this->id;
+    }
 
-    // /!\ 
     private function hydrate(array $data){
         foreach($data as $key => $value){
             $method  = "set" . ucfirst($key);
@@ -53,5 +55,18 @@ class Account {
 
     public function __construct(array $data){
         $this->hydrate($data);
+    }
+
+    public function changeAccount_type(){
+        switch ($this->account_type_id) {
+            case 1:
+                return "PEL";
+            case 2: 
+                return "Livret A";
+            case 3:
+                return "PER";
+            case 4:
+                return "Compte Courant";
+          }
     }
 }

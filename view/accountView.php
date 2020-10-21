@@ -4,7 +4,6 @@
 
     <?php 
     foreach($datas as $key => $value): 
-      var_dump($value);
     ?>
 
       <div class="card mb-4 col-lg-3 mr-4 col-sm-12 col-md-5">
